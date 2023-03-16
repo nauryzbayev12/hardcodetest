@@ -33,9 +33,15 @@ namespace Catalog.Core.Services.Implementation
 
             return entity;
         }
-        public IQueryable<Product> GetAll()
+        public IQueryable<Product> GetAll(int? produtTypeId)
         {
-            return _db.Products.Include(s => s.ProductType).AsQueryable();
+            var result = _db.Products.Include(s => s.ProductType).AsQueryable();
+
+            if (produtTypeId != null) {
+                result = result.Where(s => s.ProductTypeId == produtTypeId).AsQueryable();
+            }
+
+            return result;
         }
         public async Task<Product> Insert(CreateProductDTO dTO)
         {

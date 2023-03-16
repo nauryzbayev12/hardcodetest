@@ -26,7 +26,9 @@ namespace Catalog.Controllers
             _mapper = mapper;
         }
 
-
+        /// <summary>
+        /// Создать товаров категорию 
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> CreateProductType(CreateProductTypeDTO dTO)
         {
@@ -36,7 +38,9 @@ namespace Catalog.Controllers
 
             return Ok();
         }
-
+        /// <summary>
+        /// Обновить товаров категорию 
+        /// </summary>
         [HttpPut]
         public async Task<IActionResult> UpdateProductType(UpdateProductTypeDTO dTO)
         {
@@ -46,7 +50,9 @@ namespace Catalog.Controllers
 
             return Ok();
         }
-
+        /// <summary>
+        /// Удалить категорию товаров по идентификатору
+        /// </summary>
         [HttpDelete]
         public async Task<IActionResult> DeleteProductType(int? id)
         {
@@ -56,8 +62,9 @@ namespace Catalog.Controllers
 
             return Ok();
         }
-
-
+        /// <summary>
+        /// Категории товаров
+        /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetProductTypes()
         {
@@ -65,6 +72,9 @@ namespace Catalog.Controllers
 
             return Ok(await result.ToListAsync());
         }
+        /// <summary>
+        /// Найти категорию товаров по идентификатору
+        /// </summary>
         [HttpGet] 
         public async Task<IActionResult> GetProductType(int? id)
         {

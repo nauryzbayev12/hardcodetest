@@ -30,6 +30,9 @@ namespace Catalog.Controllers
             _uploadService = uploadService;
         }
 
+        /// <summary>
+        /// Создать товар
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> CreateProduct([FromForm] CreateProductDTO dTO)
         {
@@ -39,7 +42,9 @@ namespace Catalog.Controllers
 
             return Ok();
         }
-
+        /// <summary>
+        /// Обновить товар
+        /// </summary>
         [HttpPut]
         public async Task<IActionResult> UpdateProduct(UpdateProductDTO dTO)
         {
@@ -49,7 +54,9 @@ namespace Catalog.Controllers
 
             return Ok();
         }
-
+        /// <summary>
+        /// Удалить товар
+        /// </summary>
         [HttpDelete]
         public async Task<IActionResult> DeleteProduct(int? id)
         {
@@ -60,14 +67,19 @@ namespace Catalog.Controllers
             return Ok();
         }
 
-
-        [HttpGet]
-        public async Task<IActionResult> GetProducts()
+        /// <summary>
+        /// Вывести список товаров , по фильтору категории товара
+        /// </summary>
+        [HttpGet] 
+        public async Task<IActionResult> GetProducts(int? produtTypeId)
         {
-            var result = _productService.GetAll();
+            var result = _productService.GetAll(produtTypeId);
 
             return Ok(await result.ToListAsync());
         }
+        /// <summary>
+        /// Найти  товаро по идентификатору
+        /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetProduct(int? id)
         {
@@ -77,7 +89,9 @@ namespace Catalog.Controllers
 
             return Ok(result);
         }
-
+        /// <summary>
+        /// Найти  изоброжение по идентификатору
+        /// </summary>
         [HttpGet] 
         public IActionResult GetImageById(int id)
         {

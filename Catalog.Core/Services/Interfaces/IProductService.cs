@@ -11,7 +11,7 @@ namespace Catalog.Core.Services.Interfaces
     public interface IProductService
     {
         Task<Product> Delete(int id);
-        IQueryable<Product> GetAll();
+        IQueryable<Product> GetAll(int? produtTypeId);
         Task<Product> Insert(CreateProductDTO dTO);
         Task<Product> Update(UpdateProductDTO dTO);
         Task<Product> Find(int id);
